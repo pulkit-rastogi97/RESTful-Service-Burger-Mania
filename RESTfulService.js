@@ -7,14 +7,11 @@ var bodyParser = require('body-parser');
 // Create Express app
 var app = express();
 
-app.use(bodyParser.json());
-app.use(express.static('public'));
-
 // Setting port no for listening
 app.set('port', 9876);
+app.use(bodyParser.json());
 
-
-//To allow CORS - Cross Origin Resrouce Sharing 
+// To allow CORS - Cross Origin Resrouce Sharing 
 app.all('*', function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
@@ -23,12 +20,12 @@ app.all('*', function (req, res, next) {
 });
 
 app.listen(app.get('port'), function () {
-    console.log('Server up at' + app.get('port'));
+    console.log('Server up: http://localhost:' + app.get('port'));
 });
 
 //RESTful Methods / APIs
 app.get('/', function (req, res) {
-    res.send('<h1>RESTFul Service using Express!</h1>');
+    res.send('<h1>RESTFul Service using Express! Pulkit</h1>');
 });
 
 app.post("/orders", function (req, res) {
@@ -42,9 +39,12 @@ app.post("/orders", function (req, res) {
         JSON.stringify(req.body));
 
     data.quantity = req.body.totalQuantity;
-    data.price = req.body.totalPrice;
+    var totalPrice = req.body.totalPrice;
 
-    if (totalPrice >= 500 && totalPrice <= 1000) {
+    if( totalPrice < 500){
+        data.price = totalPrice;
+    }
+    else if (totalPrice >= 500 && totalPrice <= 1000) {
         data.discount = 5;
         data.price = ( totalPrice - ((totalPrice * 5) / 100));
     }
