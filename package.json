@@ -9,7 +9,7 @@
     },
   "scripts": {
     "start": "node RESTFulService.js",
-    "start:dev": "nodemon RESTFulService.js",
+    "start:prod": "nodemon RESTFulService.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Pulkit Rastogi",
