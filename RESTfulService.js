@@ -7,9 +7,12 @@ var bodyParser = require('body-parser');
 // Create Express app
 var app = express();
 
+app.use(bodyParser.json());
+app.use(express.static('public'));
+
 // Setting port no for listening
 app.set('port', 9876);
-app.use(bodyParser.json());
+
 
 //To allow CORS - Cross Origin Resrouce Sharing 
 app.all('*', function (req, res, next) {
