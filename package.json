@@ -2,7 +2,7 @@
   "name": "simple_restful_service",
   "version": "1.0.0",
   "description": "",
-  "main": "RESTFulService.js",
+  "main": "./app/RESTFulService.js",
   "engines": {
     "node" : "12.16.1",
      "npm" : "6.13.4"
